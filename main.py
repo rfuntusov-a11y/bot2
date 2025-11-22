@@ -1,6 +1,6 @@
 from fastapi import FastAPI, Request
 import asyncio
-import httpx
+import https
 import os
 
 TOKEN = os.getenv("BOT_TOKEN")
@@ -10,7 +10,7 @@ app = FastAPI()
 
 # Отправка сообщений
 async def send_message(chat_id, text):
-    async with httpx.AsyncClient() as client:
+    async with https.AsyncClient() as client:
         await client.post(API_URL + "sendMessage", json={
             "chat_id": chat_id,
             "text": text
@@ -35,3 +35,4 @@ async def telegram_webhook(request: Request):
 @app.get("/")
 def home():
     return {"status": "bot running"}
+
